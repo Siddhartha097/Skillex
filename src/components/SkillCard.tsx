@@ -22,15 +22,19 @@ const SkillCard = ({
     title,
 }: SkillRecord) => {
     const [copySuccess, setCopySuccess] = useState(false);
+    const [copyError, setCopyError] = useState(false);
 
     const handleCopy = async () => {
         try {
             await navigator.clipboard.writeText(installCommand);
             setCopySuccess(true);
+            setCopyError(false);
             setTimeout(() => setCopySuccess(false), 2000);
         } catch (error) {
             console.error("Failed to copy to clipboard:", error);
             // Optionally show user feedback for the error
+            setCopyError(true);
+        setTimeout(() => setCopyError(false), 2000);
         }
     };
 

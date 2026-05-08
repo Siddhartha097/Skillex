@@ -11,6 +11,8 @@ export const dummySkills: SkillRecord[] = [
         createdAt: "2026-05-01T10:00:00Z",
         authorClerkId: "user_2N72ax",
         authorEmail: "dev@example.com",
+        upvotes: 42,
+        commentCount: 8,
     },
     {
         id: "cl-102",
@@ -94,7 +96,7 @@ export const dummySkills: SkillRecord[] = [
         id: "cl-108",
         title: "Zustand State Management",
         description:
-            "A small, fast, and scalable bearbones state-management solution.",
+            "A small, fast, and scalable barebones state-management solution.",
         slug: "zustand-state-management",
         category: "Frontend",
         tags: ["react", "state", "zustand"],
