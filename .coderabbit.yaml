@@ -1,0 +1,6 @@
+# .coderabbit.yaml
+reviews:
+  enabled: true
+  auto_review: true
+  path_filters:
+    - "!**/routeTree.gen.ts" # Skip reviewing the auto-generated TanStack file
