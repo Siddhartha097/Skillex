@@ -9,6 +9,4 @@ interface SkillRecord {
     createdAt: string | null;
     authorClerkId: string | null;
     authorEmail: string | null;
-    upvotes: number;
-    commentCount: number;
 }

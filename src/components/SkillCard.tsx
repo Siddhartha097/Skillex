@@ -22,19 +22,15 @@ const SkillCard = ({
     title,
 }: SkillRecord) => {
     const [copySuccess, setCopySuccess] = useState(false);
-    const [copyError, setCopyError] = useState(false);
 
     const handleCopy = async () => {
         try {
             await navigator.clipboard.writeText(installCommand);
             setCopySuccess(true);
-            setCopyError(false);
             setTimeout(() => setCopySuccess(false), 2000);
         } catch (error) {
             console.error("Failed to copy to clipboard:", error);
             // Optionally show user feedback for the error
-            setCopyError(true);
-        setTimeout(() => setCopyError(false), 2000);
         }
     };
 
@@ -69,6 +65,7 @@ const SkillCard = ({
                         <div className="author-copy">
                             <p>{authorClerkId}</p>
                             <p>
+
                                 {createdAt
                                     ? new Date(createdAt).toLocaleDateString()
                                     : "Date unknown"}
@@ -93,7 +90,6 @@ const SkillCard = ({
                     <button
                         className="copy"
                         onClick={handleCopy}
-                        type="button"
                         aria-label={`Copy install command for ${title}`}
                     >
                         {copySuccess ? <Check size={16} /> : <Copy size={16} />}

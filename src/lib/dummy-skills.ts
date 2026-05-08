@@ -11,8 +11,6 @@ export const dummySkills: SkillRecord[] = [
         createdAt: "2026-05-01T10:00:00Z",
         authorClerkId: "user_2N72ax",
         authorEmail: "dev@example.com",
-        upvotes: 42,
-        commentCount: 8,
     },
     {
         id: "cl-102",
@@ -26,8 +24,6 @@ export const dummySkills: SkillRecord[] = [
         createdAt: "2026-05-02T14:30:00Z",
         authorClerkId: "user_8J22bz",
         authorEmail: "designer@example.com",
-        upvotes: 28,
-        commentCount: 5,
     },
     {
         id: "cl-103",
@@ -41,8 +37,6 @@ export const dummySkills: SkillRecord[] = [
         createdAt: "2026-05-03T09:15:00Z",
         authorClerkId: "user_9K33cc",
         authorEmail: "backend-lead@database.io",
-        upvotes: 35,
-        commentCount: 12,
     },
     {
         id: "cl-104",
@@ -56,8 +50,6 @@ export const dummySkills: SkillRecord[] = [
         createdAt: "2026-05-04T18:45:00Z",
         authorClerkId: "user_4K99pp",
         authorEmail: "security-lead@example.com",
-        upvotes: 51,
-        commentCount: 15,
     },
     {
         id: "cl-105",
@@ -71,8 +63,6 @@ export const dummySkills: SkillRecord[] = [
         createdAt: "2026-05-04T20:30:00Z",
         authorClerkId: "user_1A23cc",
         authorEmail: "siddhartha@example.com",
-        upvotes: 22,
-        commentCount: 3,
     },
     {
         id: "cl-106",
@@ -104,7 +94,7 @@ export const dummySkills: SkillRecord[] = [
         id: "cl-108",
         title: "Zustand State Management",
         description:
-            "A small, fast, and scalable barebones state-management solution.",
+            "A small, fast, and scalable bearbones state-management solution.",
         slug: "zustand-state-management",
         category: "Frontend",
         tags: ["react", "state", "zustand"],
