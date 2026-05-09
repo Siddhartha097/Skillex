@@ -1,0 +1,26 @@
+# user table
+
+type User @table(key: "clerkId") {
+  clerkId: String! @unique
+  email: String!
+  username: String
+  imageUrl: String
+}
+
+# skill table
+
+type Skill @table{
+    id: UUID! @default(expr: "uuidV4()")
+    #relation
+    author: User!
+    #skill content
+    title: String!
+    description: String!
+    tags: [String!]!
+    #tech data
+    installCommand: String!
+    promptConfig: String!
+    usageExample: String!
+    #metadata
+    createdAt: Timestamp! @default(expr: "request.time")
+}

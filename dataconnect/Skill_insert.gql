@@ -1,0 +1,17 @@
+# This is a file for you to write an un-named mutation.
+# Only one un-named mutation is allowed per file.
+mutation {
+    skill_insert(
+            data: {
+            id: "11111111222233334444555555555558"
+            authorClerkId: "user_3DRUVUEFrFG3UoAGw9K7EpIfvpf"
+            createdAt: "2026-05-09T06:10:32.685Z"
+            description: "Mastering asynchronous state management and data fetching in React applications."
+            installCommand: "npm i @tanstack/react-query"
+            promptConfig: "You are an Expert Senior Tenstack Start Developer"
+            tags: [ "react", "tanstack", "state-management" ]
+            title: "React Query Essentials"
+            usageExample: "Review and Optimize it"
+        }
+    )
+}

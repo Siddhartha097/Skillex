@@ -1,3 +1,4 @@
+import type { GetSkillsData } from "#/dataconnect-generated";
 import { usePostHog } from "@posthog/react";
 import { Link } from "@tanstack/react-router";
 import {
@@ -10,20 +11,22 @@ import {
 } from "lucide-react";
 import { useState } from "react";
 
+type SkillCardProps = GetSkillsData["skills"][number];
+
 const SkillCard = ({
-	authorEmail,
-	authorClerkId,
-	category,
+	
 	createdAt,
 	description,
 	id,
 	installCommand,
-	slug,
+	author,
 	tags,
 	title,
-}: SkillRecord) => {
+}: SkillCardProps) => {
 	const [copySuccess, setCopySuccess] = useState(false);
 	const posthog = usePostHog();
+
+	const category = tags[0] ?? "General";
 
 	const handleCopy = async () => {
 		try {
@@ -33,7 +36,6 @@ const SkillCard = ({
 			posthog.capture("skill_install_command_copied", {
 				skill_id: id,
 				skill_title: title,
-				skill_slug: slug,
 				skill_category: category,
 				install_command: installCommand,
 			});
@@ -47,7 +49,7 @@ const SkillCard = ({
 		posthog.capture("skill_upvoted", {
 			skill_id: id,
 			skill_title: title,
-			skill_slug: slug,
+	
 			skill_category: category,
 		});
 	};
@@ -56,7 +58,6 @@ const SkillCard = ({
 		posthog.capture("skill_bookmarked", {
 			skill_id: id,
 			skill_title: title,
-			skill_slug: slug,
 			skill_category: category,
 		});
 	};
@@ -65,7 +66,6 @@ const SkillCard = ({
 		posthog.capture("skill_card_opened", {
 			skill_id: id,
 			skill_title: title,
-			skill_slug: slug,
 			skill_category: category,
 		});
 	};
@@ -93,9 +93,9 @@ const SkillCard = ({
 			<div className="body">
 				<div className="meta">
 					<div className="author">
-						<img src={`/logo512.png`} alt="Author Avatar" className="avatar" />
+						<img src={author.imageUrl} alt="Author Avatar" className="avatar" />
 						<div className="author-copy">
-							<p>{authorClerkId}</p>
+							<p>{author.username}</p>
 							<p>
 								{createdAt
 									? new Date(createdAt).toLocaleDateString()
@@ -141,7 +141,7 @@ const SkillCard = ({
 						</button>
 						<div className="comments">
 							<MessagesSquare size={14} />
-							<span>{authorEmail ? 1 : 0}</span>
+							<span>{author.email ? 1 : 0}</span>
 						</div>
 					</div>
 					<div className="actions">
