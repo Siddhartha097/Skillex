@@ -116,17 +116,17 @@ export const dummySkills: SkillRecord[] = [
         authorClerkId: "user_2H55rr",
         authorEmail: "data-architect@neon.tech",
     },
-    {
-        id: "cl-110",
-        title: "Vite Project Scaffolding",
-        description:
-            "Modern frontend tooling for faster development and optimized builds.",
-        slug: "vite-project-scaffolding",
-        category: "Frontend",
-        tags: ["vite", "tooling", "frontend"],
-        installCommand: "npm create vite@latest",
-        createdAt: "2026-05-09T08:10:00Z",
-        authorClerkId: "user_7L44gg",
-        authorEmail: "build-master@example.com",
-    },
+    // {
+    //     id: "cl-110",
+    //     title: "Vite Project Scaffolding",
+    //     description:
+    //         "Modern frontend tooling for faster development and optimized builds.",
+    //     slug: "vite-project-scaffolding",
+    //     category: "Frontend",
+    //     tags: ["vite", "tooling", "frontend"],
+    //     installCommand: "npm create vite@latest",
+    //     createdAt: "2026-05-09T08:10:00Z",
+    //     authorClerkId: "user_7L44gg",
+    //     authorEmail: "build-master@example.com",
+    // },
 ];

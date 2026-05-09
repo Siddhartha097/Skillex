@@ -1,11 +1,36 @@
-import SkillCard from "#/components/SkillCard";
+import { usePostHog } from "@posthog/react";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Terminal } from "lucide-react";
-import { dummySkills } from "#/lib/dummy-skills";
+import SkillCard from "#/components/SkillCard";
+import { createServerFn } from "@tanstack/react-start";
+import { getSkills } from "#/dataconnect-generated";
+import { dataConnect } from "#/lib/firebase";
 
-export const Route = createFileRoute("/")({ component: Home });
+
+
+const getSkillsFn = createServerFn({ method: "GET" }).handler(async () => {
+    try {
+        const { data } = await getSkills(dataConnect, {
+            searchTerm: "",
+            limit: 10,
+        });
+
+        return data.skills;
+    } catch (error) {
+        console.error(error);
+        return [];
+    }
+});
+
+export const Route = createFileRoute("/")({ component: Home, loader:() => getSkillsFn() });
+
+
 
 function Home() {
+    const posthog = usePostHog();
+
+	const skills = Route.useLoaderData();
+
     return (
         <main id="home">
             <section className="hero">
@@ -26,11 +51,21 @@ function Home() {
                 </div>
 
                 <div className="actions">
-                    <Link to="/skills" className="btn-primary">
+                    <Link
+                        to="/skills"
+                        className="btn-primary"
+                        onClick={() =>
+                            posthog.capture("explore_skills_clicked")
+                        }
+                    >
                         <Terminal size={18} />
                         <span>Explore Skills</span>
                     </Link>
-                    <Link to="/skills/new" className="btn-secondary">
+                    <Link
+                        to="/skills/new"
+                        className="btn-secondary"
+                        onClick={() => posthog.capture("publish_skill_clicked")}
+                    >
                         <Terminal size={18} />
                         <span>Publish Skill</span>
                     </Link>
@@ -47,11 +82,11 @@ function Home() {
                 </div>
 
                 <div>
-                    {dummySkills.length === 0 ? (
+                    {skills.length === 0 ? (
                         <p>No skills published yet.</p>
                     ) : (
                         <div className="skills-grid">
-                            {dummySkills.map((skill) => (
+                            {skills.map((skill) => (
                                 <SkillCard key={skill.id} {...skill} />
                             ))}
                         </div>

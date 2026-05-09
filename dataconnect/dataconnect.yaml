@@ -1,0 +1,13 @@
+specVersion: "v1"
+serviceId: "skillex-f9d75-service"
+location: "asia-northeast3"
+schemas:
+  - source: "./schema"
+    datasource:
+      postgresql:
+        database: "skillex-f9d75-database"
+        cloudSql:
+          instanceId: "skillex-f9d75-instance"
+          # schemaValidation: "STRICT"     # STRICT mode makes Postgres schema match Data Connect exactly.
+          # schemaValidation: "COMPATIBLE" # COMPATIBLE mode makes Postgres schema compatible with Data Connect.
+connectorDirs: ["./connectors"]
