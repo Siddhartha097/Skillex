@@ -93,7 +93,7 @@ const SkillCard = ({
 			<div className="body">
 				<div className="meta">
 					<div className="author">
-						<img src={author.imageUrl} alt="Author Avatar" className="avatar" />
+						<img src={author.imageUrl || ""} alt="Author Avatar" className="avatar" />
 						<div className="author-copy">
 							<p>{author.username}</p>
 							<p>
